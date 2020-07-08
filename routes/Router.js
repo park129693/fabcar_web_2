@@ -16,4 +16,21 @@ router.get('/searchdata', async(req, res, next)=>{
     // res.send(resultData)
     res.render('searchdata',{data:resultData, KEY:searchdata})
 })
+
+router.get('/create', (req, res, next)=>{
+    res.render('create')
+})
+
+router.post('/create', async (req, res, next)=>{
+    console.log(req.body.KEY)
+    var KEY = req.body.KEY
+    var color = req.body.color
+    var make = req.body.make
+    var model = req.body.model
+    var owner = req.body.owner
+
+    await queryUtil.createCar(KEY, color, make, model, owner)
+
+    await res.redirect('/')
+})
 module.exports = router;
