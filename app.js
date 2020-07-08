@@ -9,6 +9,8 @@ var apiRouter = require('./routes/Router')
 app.set('views', path.resolve(__dirname + '/views'))
 app.set('view engine', 'ejs')
 
+app.use(express.static(__dirname + '/public'))
+
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
